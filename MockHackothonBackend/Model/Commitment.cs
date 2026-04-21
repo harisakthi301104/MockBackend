@@ -1,3 +1,5 @@
+using MockHackothonBackend.Model;
+
 namespace MockHackothonBackend.Models
 {
     public class Commitment

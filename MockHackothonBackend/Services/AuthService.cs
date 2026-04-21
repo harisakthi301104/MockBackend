@@ -1,6 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using MockHackothonBackend.Data;
+using MockHackothonBackend.DTOs.Auth;
+using MockHackothonBackend.Enums;
 using MockHackothonBackend.Helpers;
+using MockHackothonBackend.Models;
 
 
 namespace MockHackothonBackend.Services
