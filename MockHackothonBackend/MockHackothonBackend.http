@@ -1,0 +1,6 @@
+@MockHackothonBackend_HostAddress = http://localhost:5177
+
+GET {{MockHackothonBackend_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
