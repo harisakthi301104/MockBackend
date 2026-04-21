@@ -39,36 +39,36 @@ namespace MockHackothonBackend.Helpers
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
-        public int? ValidateToken(string token)
-        {
-            if (string.IsNullOrEmpty(token))
-                return null;
+        //public int? ValidateToken(string token)
+        //{
+        //    if (string.IsNullOrEmpty(token))
+        //        return null;
 
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.UTF8.GetBytes(_configuration["Jwt:Secret"]!);
+        //    var tokenHandler = new JwtSecurityTokenHandler();
+        //    var key = Encoding.UTF8.GetBytes(_configuration["Jwt:Secret"]!);
 
-            try
-            {
-                tokenHandler.ValidateToken(token, new TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(key),
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidIssuer = _configuration["Jwt:Issuer"],
-                    ValidAudience = _configuration["Jwt:Audience"],
-                    ClockSkew = TimeSpan.Zero
-                }, out SecurityToken validatedToken);
+        //    try
+        //    {
+        //        tokenHandler.ValidateToken(token, new TokenValidationParameters
+        //        {
+        //            ValidateIssuerSigningKey = true,
+        //            IssuerSigningKey = new SymmetricSecurityKey(key),
+        //            ValidateIssuer = true,
+        //            ValidateAudience = true,
+        //            ValidIssuer = _configuration["Jwt:Issuer"],
+        //            ValidAudience = _configuration["Jwt:Audience"],
+        //            ClockSkew = TimeSpan.Zero
+        //        }, out SecurityToken validatedToken);
 
-                var jwtToken = (JwtSecurityToken)validatedToken;
-                var userId = int.Parse(jwtToken.Claims.First(x => x.Type == ClaimTypes.NameIdentifier).Value);
+        //        var jwtToken = (JwtSecurityToken)validatedToken;
+        //        var userId = int.Parse(jwtToken.Claims.First(x => x.Type == ClaimTypes.NameIdentifier).Value);
 
-                return userId;
-            }
-            catch
-            {
-                return null;
-            }
-        }
+        //        return userId;
+        //    }
+        //    catch
+        //    {
+        //        return null;
+        //    }
+        //}
     }
 }
